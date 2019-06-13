@@ -1,7 +1,7 @@
 parameters:
     git_dir: .
     bin_dir: vendor/bin
-    process_timeout: 600
+    process_timeout: 120
     testsuites:
       static:
           tasks:
@@ -10,7 +10,7 @@ parameters:
             - securitychecker
             - phpcs
             - phpmd
-            - shell
+            - phpmnd
     tasks:
       composer:
       securitychecker:
@@ -26,6 +26,6 @@ parameters:
       phpmd:
           whitelist_patterns: ['/^app(.*)/', '/^config(.*)/', '/^recources(.*)/']          
           ruleset: ['vendor/cubesystems/static-analysers/phpdm-ruleset.xml']
-      shell:
-          scripts:
-             - ["-c", "./vendor/bin/phpmnd"]
+      phpmnd:
+        directory: 'app'
+        hint: false
