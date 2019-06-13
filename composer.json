@@ -1,0 +1,15 @@
+{
+    "name": "cubesystems/static-analysers",
+    "description": "Grumphp wrapper for analysing Laravel projects",
+    "license": "MIT",
+    "require": {
+        "phpro/grumphp": "^0.15.0",
+        "friendsofphp/php-cs-fixer": "^2.15",    
+        "phpmd/phpmd": "^2.6",
+        "sensiolabs/security-checker": "^5.0",
+        "nunomaduro/larastan": "^0.3",
+        "wapmorgan/php-code-fixer": "^2.0",
+        "povils/phpmnd" : "^2.1"
+    }
+}
+

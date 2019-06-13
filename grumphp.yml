@@ -1,0 +1,40 @@
+parameters:
+    git_dir: .
+    bin_dir: vendor/bin
+    process_timeout: 600
+    testsuites:
+      static:
+          tasks:
+            - composer
+            - git_blacklist
+            - securitychecker
+            - phpcs
+            - phpmd
+            - phpcsfixer2
+            - shell
+    tasks:
+      composer:
+      securitychecker:
+      git_blacklist:
+          keywords: [die(, var_dump(, exit;, dd, dump]
+      phpcsfixer2:
+          allow_risky: ~
+          cache_file: ~
+          config: ~
+          rules: 
+            '@PSR2': true
+          using_cache: ~
+          config_contains_finder: true
+          verbose: true
+          diff: false
+          triggered_by: ['php']
+      phpstan:
+          ignore_patterns: ['/^tests(.*)/', '/^database(.*)/', '/^config(.*)/', '/^routes(.*)/']
+          configuration: vendor/cubesystems/static-analysers/larastan.neon  
+          level: 5          
+      phpmd:
+          whitelist_patterns: ['/^app(.*)/', '/^config(.*)/', '/^recources(.*)/']          
+          ruleset: ['vendor/cubesystems/static-analysers/phpdm-ruleset.xml']
+      shell:
+          scripts:
+             - ["-c", "./vendor/bin/phpmnd"]
