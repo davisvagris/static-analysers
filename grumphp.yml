@@ -15,6 +15,7 @@ parameters:
     tasks:
       composer:
       securitychecker:
+      git_commit_message:
       git_blacklist:
           keywords: 
           - '(;| |^)(die|dd|dump|var_dump|exit|eval)\(' 
